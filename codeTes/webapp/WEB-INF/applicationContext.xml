@@ -38,7 +38,7 @@ http://www.springframework.org/schema/task/spring-task.xsd">
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
-		<property name="configLocation" value="classpath:com/jun/mybatis/configuration.xml"/>
+		<property name="configLocation" value="classpath:com/codeTest/mybatis/configuration.xml"/>
 	</bean>
 	
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">

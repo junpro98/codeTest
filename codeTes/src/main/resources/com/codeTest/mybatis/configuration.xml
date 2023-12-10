@@ -3,7 +3,7 @@
 <configuration>
 
 	<mappers>
-		<mapper resource="com/jun/mybatis/codeTestMapper.xml"/>
+		<mapper resource="com/codeTest/mybatis/codeTestMapper.xml"/>
 	</mappers>
 
 </configuration>
