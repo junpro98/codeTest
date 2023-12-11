@@ -12,5 +12,8 @@
 		비밀번호 : <input type="password" name="userPw">
 		<input type="submit" name="submit" value="로그인">
 	</form>
+	<div>
+		admin계정은 ID:admin PW:admin 이상입니다.
+	</div>
 </body>
 </html>

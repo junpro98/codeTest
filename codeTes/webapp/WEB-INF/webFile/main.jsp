@@ -17,7 +17,7 @@
 </head>
 <body>
     <h2>도서리스트</h2>
-    <%= id %>
+<%--     <%= id %> --%>
     <table border="1">
         <tr>
             <th>책 번호</th>
@@ -36,7 +36,7 @@
             <td><%= (book.getRental() == 0) ? "대여 가능" : "대여 중" %></td>
             <td>
                 <%
-                    if (id.equals("admin")) {
+                    if (id != null && id.equals("admin")) {
                 %>
                 <form action="regi_modify" method="post">
                     <input type="hidden" value="<%= book.getBookId() %>" name="hidden">
@@ -69,7 +69,7 @@
     </table>
     <div>
         <%
-            if (id.equals("admin")) {
+            if (id != null && id.equals("admin")) {
         %>
         <form action="regi" method="post">
             <input type="button" value="도서등록" onclick="regi()">

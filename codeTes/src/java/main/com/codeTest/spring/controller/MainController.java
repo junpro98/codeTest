@@ -49,13 +49,14 @@ public class MainController {
 			HttpSession session) {
 		System.out.println(userId);
 		List<Login> list = cser.checkLogin(userId, userPw);
-		if (list != null && list.isEmpty()) {
-			login.addAttribute("list", list);
-			session.setAttribute("id", userId);
-			return "/login";
-		} else {
-			return "/main";
-		}
+		if (list != null && !list.isEmpty()) {
+	        login.addAttribute("list", list);
+	        session.setAttribute("id", userId);
+	        return "redirect:/main";
+	    } else {
+	    	session.removeAttribute("id");
+	        return "redirect:/login";
+	    }
 	}
 
 	@RequestMapping("/main")
@@ -64,38 +65,38 @@ public class MainController {
 		book.addAttribute("list", list);
 		return "WEB-INF/webFile/main.jsp";
 	}
-	
+
 	@RequestMapping("/regi")
 	public String regi() {
 		return "WEB-INF/webFile/regi.jsp";
 	}
-	
+
 	@RequestMapping("/regi_check")
 	public String regi_check(@RequestParam String bookName) {
 		cser.regi_check(bookName);
-		return "/main";
+		return "redirect:/main";
 	}
-	
+
 	@RequestMapping("/regi_modify")
 	public String regi_modify() {
 		return "WEB-INF/webFile/modify.jsp";
 	}
-	
+
 	@RequestMapping("/modify_check")
 	public String modify_check(@RequestParam String modify, @RequestParam int hidden) {
 		cser.modify_check(modify, hidden);
-		return "/main";
+		return "redirect:/main";
 	}
-	
+
 	@RequestMapping("/rent")
 	public String rent(@RequestParam String userId, @RequestParam int bookId) {
 		cser.rental(userId, bookId);
-		return "/main";
+		return "redirect:/main";
 	}
-	
+
 	@RequestMapping("/return")
 	public String retu(@RequestParam int rental, @RequestParam int bookId) {
 		cser.retu(rental, bookId);
-		return "/main";
+		return "redirect:/main";
 	}
 }
