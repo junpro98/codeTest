@@ -12,4 +12,28 @@
 	<select id="selectBook" resultType="com.codeTest.spring.vo.Book">
 		SELECT * FROM codetest.book
 	</select>
+	
+	<insert id="regi_check" parameterType="com.codeTest.spring.vo.Book">
+		INSERT INTO codetest.book(bookName, rental) VALUE (#{bookName}, 0)
+	</insert>
+	
+	<update id="modify_check" parameterType="com.codeTest.spring.vo.Book">
+		UPDATE codetest.book SET bookName = #{modify} WHERE bookId = #{hidden};
+	</update>
+	
+	<insert id="rental" parameterType="com.codeTest.spring.vo.Rental">
+		INSERT INTO rental (userId, bookId) VALUE (#{userId}, #{bookId});	
+	</insert>
+	
+	<update id="updateBookRental" parameterType="int">
+    	UPDATE book SET rental = 1 WHERE bookId = #{bookId};
+	</update>
+	
+	<delete id="deleteRental" parameterType="int">
+    	DELETE FROM rental WHERE rentalNum = #{rental};
+	</delete>
+	
+	<update id="updateBookReturn" parameterType="int">
+    	UPDATE book SET rental = 0 WHERE bookId = #{bookId};
+	</update>
 </mapper>
